@@ -1,0 +1,125 @@
+/* Conteneur principal */
+.container-recipe {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #e9e2d5; /* Couleur de fond légère */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #444;
+    /* margin-bottom: 20px; */
+    font-family: 'Poppins', sans-serif; /* Ex. de police */
+    margin-top: 4em;
+}
+
+/* Style des groupes de champs */
+.form-group-input,
+.form-group-textarea,
+.form-group-select {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="time"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+/* Focus sur les champs */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #ffd700; /* Couleur d'accent */
+    outline: none;
+}
+
+/* Textareas */
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Erreurs */
+.error {
+    color: #e63946;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+    width: 49%;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background-color: #ffd700; /* Or */
+    border: none;
+    border-radius: 19px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 0 10rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #e6c200; /* Légèrement plus foncé */
+    transform: scale(1.02);
+}
+
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* Placeholders */
+input::placeholder,
+textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container-recipe {
+        padding: 15px;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        font-size: 0.9rem;
+    }
+}

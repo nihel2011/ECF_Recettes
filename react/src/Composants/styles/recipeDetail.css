@@ -1,0 +1,146 @@
+.recipe-detail-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff5e1;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.recipe-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.recipe-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.recipe-info p {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #333;
+}
+
+.recipe-ingredients,
+.recipe-steps,
+.recipe-tips {
+    margin-top: 20px;
+}
+
+.recipe-ingredients h2,
+.recipe-steps h2,
+.recipe-tips h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.recipe-ingredients ul,
+.recipe-steps ol {
+    padding-left: 20px;
+    color: #555;
+}
+
+.recipe-ingredients li,
+.recipe-steps li {
+    margin-bottom: 5px;
+}
+
+.recipe-tips p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e63946;
+}
+
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1024px) {
+    .recipe-detail-container {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    .recipe-title {
+        font-size: 2rem;
+    }
+
+    .recipe-description {
+        font-size: 1rem;
+    }
+
+    .recipe-ingredients h2,
+    .recipe-steps h2,
+    .recipe-tips h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .recipe-detail-container {
+        padding: 10px;
+    }
+
+    .recipe-title {
+        font-size: 1.8rem;
+    }
+
+    .recipe-description {
+        font-size: 0.9rem;
+    }
+
+    .recipe-ingredients h2,
+    .recipe-steps h2,
+    .recipe-tips h2 {
+        font-size: 1.2rem;
+    }
+
+    .recipe-info p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .recipe-detail-container {
+        padding: 8px;
+    }
+
+    .recipe-title {
+        font-size: 1.5rem;
+    }
+
+    .recipe-description {
+        font-size: 0.8rem;
+    }
+
+    .recipe-ingredients h2,
+    .recipe-steps h2,
+    .recipe-tips h2 {
+        font-size: 1rem;
+    }
+
+    .recipe-info p {
+        font-size: 0.8rem;
+    }
+}

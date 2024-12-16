@@ -1,0 +1,135 @@
+.recipe-list-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #e9e2d5;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-list-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 50px;
+}
+
+.recipe-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.recipe-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin: 14px auto; 
+    padding: 20px;
+}
+
+.recipe-card:hover {
+    transform: scale(1.05);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.recipe-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 15px;
+}
+
+.recipe-description {
+    font-size: 1rem;
+    color: #555;
+    margin: 0 15px 15px;
+}
+
+.recipe-temps{
+    font-size: 1rem;
+    color: #555;
+    margin: 0 15px ;
+}
+
+.recipe-nbrPortions{
+    font-size: 1rem;
+    color: #555;
+    margin: 0 15px ;
+}
+
+.recipe-link {
+    display: initial;
+    text-align: center;
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.recipe-link:hover {
+    background-color: #e6b800;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #e63946;
+}
+
+/* Bouton de favoris */
+.favoris-button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #f4a261;
+    margin: 3px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Effet hover sur le bouton */
+.favoris-button:hover {
+    background-color: #e76f51;
+}
+
+/* Buton remove favoris */
+.favoris-button-remove {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #e24444;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/* Effet hover sur le bouton remove  */
+.favoris-button-remove:hover {
+    background-color: red;
+}
+
+
+
+/* Gestion responsive pour mobile */
+@media (max-width: 768px) {
+    .recipe-card {
+        max-width: 100%;
+    }
+}
