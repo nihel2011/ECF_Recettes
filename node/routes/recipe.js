@@ -6,9 +6,10 @@ const {
     getAllRecipes,
     toggleFavorite,
     searchRecipes,
-    // deleteRecipe,
-    // updateRecipe,
+    deleteRecipe,
+    updateRecipe,
 } = require("../controllers/recipeController");
+
 
 // importer les favoris
 const {getFavoris, removeFavoris} = require("../controllers/favorisController");
@@ -17,6 +18,12 @@ const router = express.Router();
 
 // Route pour ajouter une recette
 router.post("/recipe", addRecipe);
+
+// Route pour mettre à jour une recette
+router.put("/recipe/:id", updateRecipe);
+
+// Route pour supprimer une recette
+router.delete("/recipe/:id", deleteRecipe);
 
 // Route pour récupérer une recette par ID
 router.get("/recipe/:id", getRecipe);

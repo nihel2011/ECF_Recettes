@@ -22,6 +22,22 @@
     margin-bottom: 20px;
 }
 
+.delete-button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f;
+}
+
+
 .recipe-description {
     font-size: 1.2rem;
     color: #666;

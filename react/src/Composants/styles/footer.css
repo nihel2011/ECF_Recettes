@@ -40,13 +40,7 @@ footer ul li:hover {
     color: #e6b800;
 }
 
-/* Taille de l'ordinateur */
-/* @media (max-width: 768px) {
-    footer ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-} */
+
 
 /* Responsive pour tablettes */
 @media (max-width: 768px) {

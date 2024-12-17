@@ -6,41 +6,59 @@ import './styles/header.css';
 const HeaderComponent = () => {
   const [search, setSearch] = useState(''); // État pour la barre de recherche
   const [results, setResults] = useState([]); // État pour les résultats de la recherche
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // État pour le menu burger
 
   // Gestion du changement dans la barre de recherche
   const handleSearchChange = (event) => {
-    const query = event.target.value;
-    setSearch(query);
+    setSearch(event.target.value);
   };
 
   // Requête vers le backend pour récupérer les résultats correspondants
   useEffect(() => {
     if (search.trim().length > 0) {
       axios.get(`http://localhost:3003/recipes?q=${search}`)
-        .then(response => {
-          setResults(response.data); // Mettre à jour les résultats avec les données reçues
+        .then((response) => {
+          setResults(response.data);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error('Erreur lors de la récupération des résultats', error);
         });
     } else {
-      setResults([]); // Réinitialiser les résultats si la barre est vide
+      setResults([]);
     }
   }, [search]);
 
   return (
     <>
       <header className="App-header">
+        {/* Logo */}
         <div className="App-logo">
           Recettes en or
         </div>
-        <nav className="App-nav">
+
+        {/* Menu burger pour mobiles */}
+        <div className="burger-menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <span className="burger-line"></span>
+          <span className="burger-line"></span>
+          <span className="burger-line"></span>
+        </div>
+
+        {/* Navigation */}
+        <nav className={`App-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul className="nav-list">
-            <li><Link to="/">Accueil</Link></li>
-            <li><Link to="/addrecipe">Ajouter une recette</Link></li>
-            <li><Link to="/favoris">Favoris</Link></li>
+            <li>
+              <Link to="/" onClick={() => setIsMenuOpen(false)}>Accueil</Link>
+            </li>
+            <li>
+              <Link to="/addrecipe" onClick={() => setIsMenuOpen(false)}>Ajouter une recette</Link>
+            </li>
+            <li>
+              <Link to="/favoris" onClick={() => setIsMenuOpen(false)}>Favoris</Link>
+            </li>
           </ul>
         </nav>
+
+        {/* Barre de recherche */}
         <div className="App-search">
           <input
             type="text"
@@ -53,7 +71,7 @@ const HeaderComponent = () => {
               <ul>
                 {results.map((recipe) => (
                   <li key={recipe._id}>
-                    <Link to={`/recipe/${recipe._id}`}>
+                    <Link to={`/recipe/${recipe._id}`} onClick={() => setSearch('')}>
                       {recipe.title}
                     </Link>
                   </li>
@@ -68,6 +86,3 @@ const HeaderComponent = () => {
 };
 
 export default HeaderComponent;
-
-
-

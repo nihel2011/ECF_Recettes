@@ -10,12 +10,13 @@ const RecipeFormComponent = () => {
         ingredients: "",
         etapes: "",
         categorie: "",
-        image: null,
+        image: "",
         cuisine: "",
         tempsPreparation: "",
         nbrPortions: "",
         conseils: "",
     });
+    const [imageFile, setImageFile] = useState(null);
 
     const [errors, setErrors] = useState({});
 
@@ -27,11 +28,12 @@ const RecipeFormComponent = () => {
     };
 
     const handleFileChange = (e) => {
-        setFormData({
-            ...formData,
-            image: e.target.files[0],
-        });
+        const file = e.target.files[0];
+        if (file) {
+            setImageFile(file); // Mettre à jour l'image choisie
+        }
     };
+
     const handleTempsChange = (e) => {
         const { name, value } = e.target;
     
@@ -79,13 +81,36 @@ const RecipeFormComponent = () => {
         e.preventDefault();
         if (!validateForm()) return;
 
-        const formDataToSend = { ...formData };
-        if (formData.image) {
-            formDataToSend.image = formData.image.name; // Placeholder for image handling logic
-        }
+        // const formDataToSend = { ...formData };
+       
 
         try {
-            const response = await fetch("http://localhost:3003/recipe", {
+              // D'abord on envoi l'image 
+            let imagePath = "";
+            if (imageFile) {
+                const formDataFile = new FormData();
+                formDataFile.append("image", imageFile);
+                // console.log(recipe);
+                // console.log("Image Preview:", imagePreview);
+                const imageResponse = await fetch("http://localhost:3003/images/uploads",
+                {
+                    method: "POST",
+                    body: formDataFile,
+                });
+                if (!imageResponse.ok) {
+                throw new Error("Erreur lors de l'upload de l'image.");
+                }
+                const imageData = await imageResponse.json();
+                // console.log('imageData', imageData);
+                imagePath = imageData.fileUrl; // Le chemin retourné par votre API
+                // console.log("Image Path:", imagePath);
+            }
+              // Mise à jour du champ `img` dans l'objet recette
+              console.log("imagePath", imagePath);
+                const formDataToSend = { ...formData, image: imagePath };
+                console.log("formDataToSend", formDataToSend);
+                
+                const response = await fetch("http://localhost:3003/recipe", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -101,7 +126,7 @@ const RecipeFormComponent = () => {
                     ingredients: "",
                     etapes: "",
                     categorie: "",
-                    image: null,
+                    image: "",
                     cuisine: "",
                     tempsPreparation: "",
                     nbrPortions: "",
@@ -200,6 +225,9 @@ const RecipeFormComponent = () => {
                         <option value="entres">Entrées</option>
                         <option value="plats">Plats principaux</option>
                         <option value="desserts">Desserts</option>
+                        <option value="boissons">Boissons</option>
+                        <option value="apéritifs">Apéritifs</option>
+                        <option value="petit-dej">Petit-déj/brunch</option>
                     </select>
                     {errors.categorie && (
                         <div className="error">{errors.categorie}</div>

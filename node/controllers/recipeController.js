@@ -11,12 +11,12 @@ const addRecipe = async (req, res) => {
         const [hours, minutes] = tempsPreparation.split(":").map(Number);
         const totalMinutes = hours * 60 + minutes;
 
-        const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+        // const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
 
         const recipe = await Recipe.create({
             ...otherData,
             tempsPreparation: totalMinutes,
-            image: imagePath,
+            // image: imagePath,
         });
 
         res.status(201).json({
@@ -106,54 +106,54 @@ const searchRecipes = async (req, res) => {
 };
 
 // Supprimer une recette
-// const deleteRecipe = async (req, res) => {
-//     try {
-//         const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
+const deleteRecipe = async (req, res) => {
+    try {
+        const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-//         if (!deletedRecipe) {
-//             return res.status(404).json({
-//                 message: "Recette introuvable ou déjà supprimée.",
-//             });
-//         }
+        if (!deletedRecipe) {
+            return res.status(404).json({
+                message: "Recette introuvable ou déjà supprimée.",
+            });
+        }
 
-//         res.status(200).json({
-//             message: "Recette supprimée avec succès.",
-//             recipe: deletedRecipe,
-//         });
-//     } catch (error) {
-//         res.status(400).json({
-//             message: "Erreur lors de la suppression de la recette.",
-//             error: error.message,
-//         });
-//     }
-// };
+        res.status(200).json({
+            message: "Recette supprimée avec succès.",
+            recipe: deletedRecipe,
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Erreur lors de la suppression de la recette.",
+            error: error.message,
+        });
+    }
+};
 
 // Mettre à jour une recette
-// const updateRecipe = async (req, res) => {
-//     try {
-//         const updatedRecipe = await Recipe.findByIdAndUpdate(
-//             req.params.id,
-//             req.body,
-//             { new: true, runValidators: true }
-//         );
+const updateRecipe = async (req, res) => {
+    try {
+        const updatedRecipe = await Recipe.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true, runValidators: true }
+        );
 
-//         if (!updatedRecipe) {
-//             return res.status(404).json({
-//                 message: "Recette introuvable pour la mise à jour.",
-//             });
-//         }
+        if (!updatedRecipe) {
+            return res.status(404).json({
+                message: "Recette introuvable pour la mise à jour.",
+            });
+        }
 
-//         res.status(200).json({
-//             message: "Recette mise à jour avec succès.",
-//             recipe: updatedRecipe,
-//         });
-//     } catch (error) {
-//         res.status(400).json({
-//             message: "Erreur lors de la mise à jour de la recette.",
-//             error: error.message,
-//         });
-//     }
-// };
+        res.status(200).json({
+            message: "Recette mise à jour avec succès.",
+            recipe: updatedRecipe,
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Erreur lors de la mise à jour de la recette.",
+            error: error.message,
+        });
+    }
+};
 
 module.exports = {
     addRecipe,
@@ -161,8 +161,8 @@ module.exports = {
     getAllRecipes,
     toggleFavorite,
     searchRecipes,
-    // deleteRecipe,
-    // updateRecipe,
+    deleteRecipe,
+    updateRecipe,
 };
 
 

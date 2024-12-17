@@ -1,7 +1,6 @@
 // express
 const express = require("express");
 const app = express();
-const multer = require("multer");
 const path = require("path");
 require('dotenv').config()
 
@@ -11,6 +10,7 @@ const mongoose = require('mongoose');
 
 // router
 const recipeRouter = require("./routes/recipe");
+const multerRouter = require("./routes/multer");
 
 // cors
 const cors = require("cors");
@@ -41,30 +41,9 @@ mongoose.connect("mongodb://127.0.0.1:27017/test")
     
 // app.use(express.urlencoded({ extended: true }));
 
-// Configuration de stockage avec Multer
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, "uploads"); // Dossier où les images seront enregistrées
-    },
-    filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        cb(null, `${uniqueSuffix}-${file.originalname}`); // Nom unique pour éviter les conflits
-    },
-});
-
-const upload = multer({
-    storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype.startsWith("image/")) {
-            cb(null, true);
-        } else {
-            cb(new Error("Le fichier doit être une image."), false);
-        }
-    },
-    limits: { fileSize: 5 * 1024 * 1024 }, // Limite de 5 Mo
-});
 // routes
 app.use("/", recipeRouter);
+app.use("/images", multerRouter);
 
 
 // server

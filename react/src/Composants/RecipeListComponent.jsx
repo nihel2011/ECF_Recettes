@@ -69,11 +69,11 @@ const RecipeListComponent = () => {
                             src={recipe.image || "https://via.placeholder.com/300"}
                             alt={recipe.title}
                         />
-                    <h2 className="recipe-title">Titre de la recette : {recipe.title}</h2>
+                    <h2 className="recipe-title"> {recipe.title}</h2>
 
                     {/* Description de la recette */}
                     <p className="recipe-description">Description de la recette :  {recipe.description.substring(0, 100)}...</p>
-                    <p className="recipe-temps">Temps de preparation : {recipe.tempsPreparation}</p>
+                    <p className="recipe-temps">Temps de preparation : {recipe.tempsPreparation} min</p>
                     <p className="recipe-nbrPortions">Nombre de portions : {recipe.nbrPortions}</p>
                     <button className="favoris-button" onClick={() => toggleFavorite(recipe._id)}>
                         {recipe.isFavorite ? "Retirer des Favoris" : "Ajouter aux Favoris"}
